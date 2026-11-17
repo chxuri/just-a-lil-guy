@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnqy16xvkej24"]
+
+[ext_resource type="Texture2D" uid="uid://cfn4wlxp8t81t" path="res://assets/images/background/extended_main.PNG" id="1_qqsp2"]
+[ext_resource type="Texture2D" uid="uid://nys0mfx6w2k2" path="res://assets/images/background/IMG_1046.PNG" id="2_lyibd"]
+[ext_resource type="Texture2D" uid="uid://balykvelorlhe" path="res://assets/images/background/IMG_1045.PNG" id="3_onb27"]
+
+[sub_resource type="GDScript" id="GDScript_0qop8"]
+resource_name = "MainMenuScript"
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_start_pressed() -> void:
+		get_tree().change_scene_to_file(\"res://scenes/levels/level_root.tscn\") # Replace with function body.
+"
+
+[node name="MainMenu" type="Node2D"]
+script = SubResource("GDScript_0qop8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -90.0
+offset_top = 2.0
+offset_right = 1333.0
+offset_bottom = 857.0
+texture = ExtResource("1_qqsp2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="TextureButton" parent="Button_manager"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 155.0
+offset_right = 2820.0
+offset_bottom = 2655.0
+scale = Vector2(0.16, 0.16)
+texture_normal = ExtResource("2_lyibd")
+texture_hover = ExtResource("3_onb27")
+
+[connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]

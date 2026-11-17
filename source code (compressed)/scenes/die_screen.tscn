@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt12fab3dp2mw"]
+
+[ext_resource type="Texture2D" uid="uid://dgyodjfta0pj" path="res://assets/images/background/extended_loss.PNG" id="1_6rx8y"]
+[ext_resource type="Texture2D" uid="uid://6ni8tw248f34" path="res://assets/images/background/IMG_1048.PNG" id="2_q2kh0"]
+[ext_resource type="Texture2D" uid="uid://bgjgrsxlqm5n8" path="res://assets/images/background/IMG_1049.PNG" id="3_vvi6a"]
+
+[sub_resource type="GDScript" id="GDScript_73b5d"]
+resource_name = "dieScript"
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_root.tscn\")
+
+
+func _on_texture_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_root.tscn\") # Replace with function body.
+"
+
+[node name="dieScreen" type="Node2D"]
+script = SubResource("GDScript_73b5d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -123.0
+offset_top = 3.0
+offset_right = 1305.0
+offset_bottom = 1029.0
+texture = ExtResource("1_6rx8y")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="button manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="button manager"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 149.0
+offset_right = 2854.0
+offset_bottom = 2649.0
+scale = Vector2(0.16, 0.16)
+texture_normal = ExtResource("2_q2kh0")
+texture_hover = ExtResource("3_vvi6a")
+
+[connection signal="pressed" from="button manager/TextureButton" to="." method="_on_texture_button_pressed"]

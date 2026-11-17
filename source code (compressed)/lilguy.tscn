@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://emeapcmj1ge7"]
+
+[ext_resource type="Texture2D" uid="uid://sopkh5g2y760" path="res://assets/images/player/IMG_1041.PNG" id="1_iwjhx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln6qp"]
+atlas = ExtResource("1_iwjhx")
+region = Rect2(1000, 1000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pphf"]
+atlas = ExtResource("1_iwjhx")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ug3v"]
+atlas = ExtResource("1_iwjhx")
+region = Rect2(1000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esbie"]
+atlas = ExtResource("1_iwjhx")
+region = Rect2(0, 1000, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e78o1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln6qp")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pphf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ug3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esbie")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[node name="lilguy" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e78o1")
+animation = &"walking"
